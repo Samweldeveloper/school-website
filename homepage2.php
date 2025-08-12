@@ -210,7 +210,7 @@
     </div>
 
     <div class="menu-item">
-      <a href="homepage.php" onclick="return confirmLogout()"><i class="fas fa-sign-out-alt"></i> LOGOUT</a>
+      <a href="index.php" onclick="return confirmLogout()"><i class="fas fa-sign-out-alt"></i> LOGOUT</a>
     </div>
   </nav>
 
@@ -240,3 +240,4 @@
 
 </body>
 </html>
+
