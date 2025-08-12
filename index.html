@@ -72,6 +72,69 @@
 </head>
 <body>
 
+
+  <div class="page-container">
+
+  <!-- Navigation Menu -->
+  <nav class="navbar">
+    <div class="menu-item"><a href="index.php"><i class="fas fa-home"></i> HOME</a></div>
+
+    <div class="menu-item">
+      <a href="#"><i class="fas fa-user-graduate"></i> STUDENT RECORDS</a>
+      <div class="submenu">
+        <a href="studentrecords.php"><i class="fas fa-users"></i> All Student Details</a>
+        <a href="new_admissions.php"><i class="fas fa-user-plus"></i> New Admission Requests</a>
+        <a href="update_student.php"><i class="fas fa-edit"></i> Update Student Details</a>
+        <a href="reporting_records.php"><i class="fas fa-file-alt"></i> Reporting Records</a>
+        <a href="disciplinary_records.php"><i class="fas fa-gavel"></i> Disciplinary Records</a>
+      </div>
+    </div>
+
+    <div class="menu-item">
+      <a href="#"><i class="fas fa-money-bill-wave"></i> FINANCIAL & FEES</a>
+      <div class="submenu">
+        <a href="fee_structure.php"><i class="fas fa-sitemap"></i> Fee Structure</a>
+        <a href="student_fees.php"><i class="fas fa-file-invoice-dollar"></i> Student Fee Records</a>
+        <a href="payment_tracking.php"><i class="fas fa-chart-line"></i> Payment Tracking</a>
+        <a href="generate_invoices.php"><i class="fas fa-file-invoice"></i> Generate Invoices</a>
+      </div>
+    </div>
+
+    <div class="menu-item">
+      <a href="#"><i class="fas fa-chart-pie"></i> REPORT & ANALYTICS</a>
+      <div class="submenu">
+        <a href="academic_reports.php"><i class="fas fa-clipboard-list"></i> Academic Reports</a>
+        <a href="fee_reports.php"><i class="fas fa-coins"></i> Fee Collection Reports</a>
+        <a href="attendance_reports.php"><i class="fas fa-calendar-check"></i> Attendance Reports</a>
+        <a href="performance_analytics.php"><i class="fas fa-tachometer-alt"></i> Performance Analytics</a>
+      </div>
+    </div>
+
+    <div class="menu-item">
+      <a href="#"><i class="fas fa-book-open"></i> ACADEMIC & CURRICULUM</a>
+      <div class="submenu">
+        <a href="class_timetables.php"><i class="fas fa-clock"></i> Class Timetables</a>
+        <a href="subject_allocation.php"><i class="fas fa-th-list"></i> Subject Allocation</a>
+        <a href="syllabus_repo.php"><i class="fas fa-folder-open"></i> Syllabus Repository</a>
+        <a href="cbc_management.php"><i class="fas fa-cogs"></i> CBC Management</a>
+        <a href="844_management.php"><i class="fas fa-project-diagram"></i> 8-4-4 Management</a>
+      </div>
+    </div>
+
+    <div class="menu-item">
+      <a href="#"><i class="fas fa-question-circle"></i> HELP & SUPPORT</a>
+      <div class="submenu">
+        <a href="user_guide.php"><i class="fas fa-book"></i> User Guide</a>
+        <a href="usersupport.php"><i class="fas fa-headset"></i> Contact IT Support</a>
+        <a href="FAQ Student.php"><i class="fas fa-info-circle"></i> FAQs</a>
+      </div>
+    </div>
+
+    <div class="menu-item">
+      <a href="homepage.php" onclick="return confirmLogout()"><i class="fas fa-sign-out-alt"></i> LOGOUT</a>
+    </div>
+  </nav>
+
   <div class="form-container">
     <h2>Select Your Role</h2>
     <select id="role" onchange="displayLink()">
@@ -117,3 +180,4 @@
 
 </body>
 </html>
+
