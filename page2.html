@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>School Admin Portal</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      height: 100%;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background: url('desks.jpg') no-repeat center center fixed;
+      background-size: cover;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      opacity: 0;
+      animation: bodyFadeIn 1.2s ease forwards;
+    }
+
+    @keyframes bodyFadeIn {
+      to { opacity: 1; }
+    }
+
+    @keyframes fadeInSlide {
+      0% { opacity: 0; transform: translateY(40px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeInNav {
+      0% { opacity: 0; transform: translateY(-20px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes glowText {
+      0% { text-shadow: 0 0 10px red, 0 0 20px red; }
+      50% { text-shadow: 0 0 20px white, 0 0 40px red; }
+      100% { text-shadow: 0 0 10px red, 0 0 20px red; }
+    }
+
+    .navbar {
+      background-color: rgba(0, 0, 0, 0.5);
+      display: flex;
+      gap: 30px;
+      padding: 12px 30px;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 999;
+      backdrop-filter: blur(5px);
+      animation: fadeInNav 1s ease forwards;
+    }
+
+    .menu-item {
+      position: relative;
+    }
+
+    .menu-item > a {
+      text-decoration: none;
+      color: white;
+      font-weight: 600;
+      font-size: 15px;
+      padding: 10px 16px;
+      border-radius: 5px;
+      transition: all 0.3s ease;
+    }
+
+    .menu-item > a:hover {
+      background-color: red;
+      color: white;
+      transform: scale(1.05);
+    }
+
+    .submenu {
+      display: none;
+      position: absolute;
+      top: 40px;
+      left: 0;
+      background-color: rgba(0, 0, 0, 0.7);
+      border-radius: 8px;
+      min-width: 220px;
+      z-index: 10;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    }
+
+    .menu-item:hover .submenu {
+      display: block;
+    }
+
+    .submenu a {
+      color: white;
+      padding: 10px 15px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 14px;
+      text-decoration: none;
+      transition: background 0.3s ease, transform 0.3s ease;
+    }
+
+    .submenu a:hover {
+      background-color: #222;
+      color: red;
+      transform: scale(1.03);
+    }
+
+    .menu-item:last-child a {
+      color: #ff5a5a;
+    }
+
+    .menu-item:last-child a:hover {
+      color: white;
+      background-color: red;
+    }
+
+    @font-face {
+      font-family: 'Besttime';
+      src: url('fonts/Besttime.ttf') format('truetype');
+      font-weight: normal;
+      font-style: normal;
+    }
+
+    .hero {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 100px 20px 60px;
+      animation: fadeInSlide 1.5s ease-out forwards;
+      opacity: 0;
+    }
+
+.hero h1 {
+  font-family: 'Besttime', cursive;
+  font-size: 100px;              
+  text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+  color: red;
+  
+}
+
+
+
+    
+
+    .hero p {
+      font-size: 50px;
+      margin-top: 10px;
+      text-shadow: 1px 1px 4px rgba(0,0,0,0.5);
+      font-style: italic;
+      font-weight: bold;
+      color: white;
+    }
+
+    .bottom-message {
+      text-align: center;
+      font-size: 16px;
+      font-weight: bold;
+      font-style: italic;
+      margin: 40px 20px;
+      color: #ffffff;
+      text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.8);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      animation: fadeInSlide 2.5s ease-out forwards;
+      opacity: 0;
+    }
+
+    footer {
+      background-color: rgba(0, 0, 0, 0.5);
+      padding: 20px 15px;
+      text-align: center;
+      font-size: 13px;
+      line-height: 1.7;
+      color: #ddd;
+      backdrop-filter: blur(3px);
+    }
+
+    footer h3 {
+      color: white;
+      margin-bottom: 10px;
+      font-size: 15px;
+    }
+
+
+    footer a {
+      color: red;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+    /* Logo container centered horizontally */
+.logo-center {
+  position: absolute; /* Position it at the top */
+  top: 60px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: auto;
+  z-index: 1000;
+}
+
+/* Logo animation */
+@keyframes logoFadeIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Logo image style */
+.logo-center img {
+  height: 80px;
+  animation: logoFadeIn 1s ease-out forwards;
+}
+
+
+  </style>
+</head>
+<body>
+
+<!-- Hero Section -->
+<div class="hero">
+  <h1>foot hill high school</h1>
+  <p>"A Clear Path for Potential"</p>
+</div>
+<!-- Centered Logo Section -->
+<div class="logo-center">
+  <img src="logo.png" alt="School Logo">
+</div>
+
+
+<!-- Navigation -->
+<nav class="navbar">
+  <div class="menu-item"><a href="#"><i class="fas fa-home"></i> HOME</a></div>
+  <div class="menu-item">
+    <a href="#"><i class="fas fa-user-graduate"></i> MY RECORDS</a>
+    <div class="submenu">
+      <a href="student view entered data.php"><i class="fas fa-users"></i> my details Details</a>
+      <!--<a href="#"><i class="fas fa-edit"></i> Update Student Details</a>-->
+      <a href="attendance.php"><i class="fas fa-file-alt"></i> Reporting Records</a>
+      <a href="discpline_display.php"><i class="fas fa-gavel"></i> Disciplinary Records</a>
+    </div>
+  </div>
+  <div class="menu-item">
+    <a href="#"><i class="fas fa-money-bill-wave"></i> FINANCIAL & FEES</a>
+    <div class="submenu">
+      <a href="schoolfees.php"><i class="fas fa-sitemap"></i> Fee Structure</a>
+      <a href="fees_record.php"><i class="fas fa-file-invoice-dollar"></i> Student Fee Records</a>
+      <a href="payment_tracking.php"><i class="fas fa-chart-line"></i> Payment Tracking</a>
+      <a href="invoices.php"><i class="fas fa-file-invoice"></i> Generate Invoices</a>
+    </div>
+  </div>
+  <div class="menu-item">
+    <a href="#"><i class="fas fa-chart-pie"></i> REPORT & ANALYTICS</a>
+    <div class="submenu">
+      <a href="studentseenmarks.php"><i class="fas fa-clipboard-list"></i> Academic Reports</a>
+      <a href="invoices.php"><i class="fas fa-coins"></i> Fee Collection Reports</a>
+      <a href="attendance.php"><i class="fas fa-calendar-check"></i> Attendance Reports</a>
+      <a href="performanceanalytics.php"><i class="fas fa-tachometer-alt"></i> Performance Analytics</a>
+    </div>
+  </div>
+  <div class="menu-item">
+    <a href="#"><i class="fas fa-book-open"></i> ACADEMIC & CURRICULUM</a>
+    <div class="submenu">
+      <a href="timetable.php"><i class="fas fa-clock"></i> Class Timetables</a>
+      <a href="timetable.php"><i class="fas fa-th-list"></i> Subject Allocation</a>
+      <a href="repository.php"><i class="fas fa-folder-open"></i> School Repository</a>
+      <a href="cbc.php"><i class="fas fa-cogs"></i> CBC Management</a>
+      <a href="844.php"><i class="fas fa-project-diagram"></i> 8-4-4 Management</a>
+    </div>
+  </div>
+  <div class="menu-item">
+    <a href="#"><i class="fas fa-question-circle"></i> HELP & SUPPORT</a>
+    <div class="submenu">
+      <a href="userguide.php"><i class="fas fa-book"></i> User Guide</a>
+      <a href="usersupport.php"><i class="fas fa-headset"></i> Contact IT Support</a>
+      <a href="FAQ Student.php"><i class="fas fa-info-circle"></i> FAQs</a>
+    </div>
+  </div>
+  <div class="menu-item"><a href="homepage.php" onclick="return confirmLogout()"><i class="fas fa-sign-out-alt"></i> LOGOUT</a></div>
+</nav>
+
+<!-- Bottom Message -->
+<div class="bottom-message">
+  <p><strong><em>Manage records, monitor progress, and access all key tools in one place.</em></strong></p>
+</div>
+
+<!-- Footer -->
+<footer>
+  &copy; 2025 Your School Name. All Rights Reserved. |
+  <a href="PRIVACY.PHP">Privacy Policy</a> |
+  <a href="terms and conditions.php">Terms of Service</a> |
+  Contact: <a href="mailto:info@foothillsschool.ac.ke">info@foothillsschool.ac.ke</a>
+</footer>
+
+<!-- Logout Confirmation Script -->
+<script>
+  function confirmLogout() {
+    return confirm("Are you sure you want to logout?");
+  }
+</script>
+
+</body>
+</html>

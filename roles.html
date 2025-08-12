@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Role Selector</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      background-color: #fefefe; /* pure white background */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    .form-container {
+      background-color: #ffffff;
+      padding: 50px;
+      border-radius: 15px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+      text-align: center;
+      border: 2px solid #ffdddd;
+    }
+
+    .form-container h2 {
+      color: #cc0000;
+      margin-bottom: 25px;
+      font-size: 24px;
+    }
+
+    select {
+      width: 280px;
+      padding: 14px;
+      font-size: 16px;
+      background-color: #fff5f5;
+      color: #333;
+      border: 2px solid #ff4d4d;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: border-color 0.3s, background-color 0.3s;
+    }
+
+    select:focus {
+      outline: none;
+      background-color: #ffeaea;
+      border-color: #ff0000;
+    }
+
+    .link-display {
+      margin-top: 30px;
+    }
+
+    .link-display a {
+      color: white;
+      background-color: #ff4d4d;
+      padding: 12px 24px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      display: inline-block;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+    .link-display a:hover {
+      background-color: #cc0000;
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="form-container">
+    <h2>Select Your Role</h2>
+    <select id="role" onchange="displayLink()">
+      <option value="">-- Choose a Role --</option>
+      <option value="admin">Admin</option>
+      <option value="accounts">Accounts</option>
+      <option value="registrar">Registrar</option>
+      <option value="discpline master">discpline master</option>
+      <option value="classteacher">Class Teacher</option>
+    </select>
+
+    <div class="link-display" id="linkOutput"></div>
+  </div>
+
+  <script>
+    function displayLink() {
+      const selected = document.getElementById("role").value;
+      const output = document.getElementById("linkOutput");
+
+      let url = "#";
+      if (selected === "admin") url = "admin SIGNUP.php";
+      else if (selected === "accounts") url = "signupaccounts.php";
+      else if (selected === "registrar") url = "registrar signup.php";
+      else if (selected === "classteacher") url = "signupteacher.php ";
+        else if (selected === "discpline master") url = "discplineform.php";
+
+      if (selected) {
+        output.innerHTML = `<a href="${url}" target="_blank">Go to ${capitalize(selected)} Page</a>`;
+      } else {
+        output.innerHTML = "";
+      }
+    }
+
+    function capitalize(str) {
+      return str.charAt(0).toUpperCase() + str.slice(1);
+    }
+  </script>
+  <script>
+  function confirmLogout() {
+    return confirm("Are you sure you want to logout?");
+  }
+</script>
+
+</body>
+</html>
