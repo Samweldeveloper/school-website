@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>School Admin Portal</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
@@ -11,12 +12,10 @@
       padding: 0;
       box-sizing: border-box;
     }
-
     html, body {
       height: 100%;
       font-family: 'Poppins', sans-serif;
     }
-
     body {
       background: url('desks.jpg') no-repeat center center fixed;
       background-size: cover;
@@ -27,27 +26,23 @@
       opacity: 0;
       animation: bodyFadeIn 1.2s ease forwards;
     }
-
-    @keyframes bodyFadeIn {
-      to { opacity: 1; }
-    }
-
+    @keyframes bodyFadeIn { to { opacity: 1; } }
     @keyframes fadeInSlide {
       0% { opacity: 0; transform: translateY(40px); }
       100% { opacity: 1; transform: translateY(0); }
     }
-
     @keyframes fadeInNav {
       0% { opacity: 0; transform: translateY(-20px); }
       100% { opacity: 1; transform: translateY(0); }
     }
-
-    @keyframes glowText {
-      0% { text-shadow: 0 0 10px red, 0 0 20px red; }
-      50% { text-shadow: 0 0 20px white, 0 0 40px red; }
-      100% { text-shadow: 0 0 10px red, 0 0 20px red; }
+    @font-face {
+      font-family: 'Besttime';
+      src: url('fonts/Besttime.ttf') format('truetype');
+      font-weight: normal;
+      font-style: normal;
     }
 
+    /* Navbar */
     .navbar {
       background-color: rgba(0, 0, 0, 0.5);
       display: flex;
@@ -59,12 +54,9 @@
       z-index: 999;
       backdrop-filter: blur(5px);
       animation: fadeInNav 1s ease forwards;
+      flex-wrap: wrap;
     }
-
-    .menu-item {
-      position: relative;
-    }
-
+    .menu-item { position: relative; }
     .menu-item > a {
       text-decoration: none;
       color: white;
@@ -73,14 +65,13 @@
       padding: 10px 16px;
       border-radius: 5px;
       transition: all 0.3s ease;
+      display: block;
     }
-
     .menu-item > a:hover {
       background-color: red;
       color: white;
       transform: scale(1.05);
     }
-
     .submenu {
       display: none;
       position: absolute;
@@ -92,11 +83,7 @@
       z-index: 10;
       box-shadow: 0 2px 10px rgba(0,0,0,0.3);
     }
-
-    .menu-item:hover .submenu {
-      display: block;
-    }
-
+    .menu-item:hover .submenu { display: block; }
     .submenu a {
       color: white;
       padding: 10px 15px;
@@ -107,29 +94,15 @@
       text-decoration: none;
       transition: background 0.3s ease, transform 0.3s ease;
     }
-
     .submenu a:hover {
       background-color: #222;
       color: red;
       transform: scale(1.03);
     }
+    .menu-item:last-child a { color: #ff5a5a; }
+    .menu-item:last-child a:hover { color: white; background-color: red; }
 
-    .menu-item:last-child a {
-      color: #ff5a5a;
-    }
-
-    .menu-item:last-child a:hover {
-      color: white;
-      background-color: red;
-    }
-
-    @font-face {
-      font-family: 'Besttime';
-      src: url('fonts/Besttime.ttf') format('truetype');
-      font-weight: normal;
-      font-style: normal;
-    }
-
+    /* Hero */
     .hero {
       flex: 1;
       display: flex;
@@ -141,19 +114,12 @@
       animation: fadeInSlide 1.5s ease-out forwards;
       opacity: 0;
     }
-
-.hero h1 {
-  font-family: 'Besttime', cursive;
-  font-size: 100px;              
-  text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
-  color: red;
-  
-}
-
-
-
-    
-
+    .hero h1 {
+      font-family: 'Besttime', cursive;
+      font-size: 100px;
+      text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+      color: red;
+    }
     .hero p {
       font-size: 50px;
       margin-top: 10px;
@@ -163,6 +129,29 @@
       color: white;
     }
 
+    /* Logo */
+    .logo-center {
+      position: absolute;
+      top: 60px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: auto;
+      z-index: 1000;
+    }
+    .logo-center img {
+      height: 80px;
+      animation: logoFadeIn 1s ease-out forwards;
+      max-width: 100%;
+    }
+    @keyframes logoFadeIn {
+      0% { opacity: 0; transform: scale(0.5); }
+      100% { opacity: 1; transform: scale(1); }
+    }
+
+    /* Bottom message */
     .bottom-message {
       text-align: center;
       font-size: 16px;
@@ -176,6 +165,7 @@
       opacity: 0;
     }
 
+    /* Footer */
     footer {
       background-color: rgba(0, 0, 0, 0.5);
       padding: 20px 15px;
@@ -185,68 +175,67 @@
       color: #ddd;
       backdrop-filter: blur(3px);
     }
-
     footer h3 {
       color: white;
       margin-bottom: 10px;
       font-size: 15px;
     }
-
-
     footer a {
       color: red;
       text-decoration: none;
     }
+    footer a:hover { text-decoration: underline; }
 
-    footer a:hover {
-      text-decoration: underline;
+    /* Responsive Styles */
+    @media (max-width: 768px) {
+      .navbar {
+        flex-direction: column;
+        gap: 10px;
+        display: none;
+      }
+      .navbar.active {
+        display: flex;
+      }
+      .menu-toggle {
+        display: block;
+        background: rgba(0, 0, 0, 0.6);
+        color: white;
+        padding: 10px 20px;
+        font-size: 18px;
+        border: none;
+        cursor: pointer;
+        position: fixed;
+        top: 10px;
+        right: 10px;
+        z-index: 1001;
+        border-radius: 5px;
+      }
+      .hero h1 { font-size: 50px; }
+      .hero p { font-size: 24px; }
+      .submenu {
+        position: relative;
+        top: 0;
+        background-color: rgba(0, 0, 0, 0.8);
+        min-width: 100%;
+      }
     }
-    /* Logo container centered horizontally */
-.logo-center {
-  position: absolute; /* Position it at the top */
-  top: 60px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: auto;
-  z-index: 1000;
-}
-
-/* Logo animation */
-@keyframes logoFadeIn {
-  0% {
-    opacity: 0;
-    transform: scale(0.5);
-  }
-  100% {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-/* Logo image style */
-.logo-center img {
-  height: 80px;
-  animation: logoFadeIn 1s ease-out forwards;
-}
-
-
   </style>
 </head>
 <body>
+
+<!-- Menu Toggle Button for Mobile -->
+<button class="menu-toggle" onclick="toggleMenu()"><i class="fas fa-bars"></i> Menu</button>
 
 <!-- Hero Section -->
 <div class="hero">
   <h1>foot hill high school</h1>
   <p>"A Clear Path for Potential"</p>
 </div>
+
 <!-- Centered Logo Section -->
 <div class="logo-center">
   <img src="logo.png" alt="School Logo">
 </div>
-
 
 <!-- Navigation -->
 <nav class="navbar">
@@ -254,8 +243,7 @@
   <div class="menu-item">
     <a href="#"><i class="fas fa-user-graduate"></i> MY RECORDS</a>
     <div class="submenu">
-      <a href="student view entered data.php"><i class="fas fa-users"></i> my details Details</a>
-      <!--<a href="#"><i class="fas fa-edit"></i> Update Student Details</a>-->
+      <a href="student view entered data.php"><i class="fas fa-users"></i> My Details</a>
       <a href="attendance.php"><i class="fas fa-file-alt"></i> Reporting Records</a>
       <a href="discpline_display.php"><i class="fas fa-gavel"></i> Disciplinary Records</a>
     </div>
@@ -312,12 +300,14 @@
   Contact: <a href="mailto:info@foothillsschool.ac.ke">info@foothillsschool.ac.ke</a>
 </footer>
 
-<!-- Logout Confirmation Script -->
+<!-- Scripts -->
 <script>
   function confirmLogout() {
     return confirm("Are you sure you want to logout?");
   }
+  function toggleMenu() {
+    document.querySelector('.navbar').classList.toggle('active');
+  }
 </script>
-
 </body>
 </html>
